@@ -14,6 +14,12 @@ Você pode consultar informações adicionais sobre quadrados mágicos [aqui](ht
 Este problema foi inspirado por um jogo, dentre vários outros, comercializados pela empresa
 [EnigMais](https://www.enigmais.com.br/).
 
+## Importante (possível erro)
+
+Conforme https://mathworld.wolfram.com/MagicSquare.html o quadrado mágico 4x4 possui 880 soluções, enquanto
+o que segue abaixo é um número menor e, portanto, indica que o _design_ e a implementação correspondente,
+conforme esta referência, estão errados. O que exige investigação posterior.
+
 ## Projeto (design)
 
 A proposta é resolver o desafio por meio do produto D44, uma página web que exibe todas as soluções possíveis. As soluções são calculadas toda vez que a página é carregada.
