@@ -55,3 +55,10 @@ Uma melhoria é empregar um filtro. O usuário tem a disposição uma matriz na
 qual estabelece um ou mais valores nas posições desejadas e, após cada mudança
 do filtro, apenas as matrizes que satisfazem a restrição são exibidas. Quando
 esta matriz "filtro" é "zerada", naturalmente são exibidas todas as soluções.
+
+## Implementação
+
+Consulte o diretório [forca-bruta](forca-bruta). Observe que o arquivo
+[quadrado-magico.js](./forca-bruta/quadrado-magico.js) foi aquele
+utilizado nas experimentações. O cliente está no diretório
+[web](./forca-bruta/web).
