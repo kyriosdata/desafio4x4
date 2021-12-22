@@ -62,3 +62,7 @@ Consulte o diretório [forca-bruta](forca-bruta). Observe que o arquivo
 [quadrado-magico.js](./forca-bruta/quadrado-magico.js) foi aquele
 utilizado nas experimentações. O cliente está no diretório
 [web](./forca-bruta/web).
+
+## Cliente (em produção)
+
+Siga https://kyriosdata.github.io/desafio4x4.
