@@ -14,6 +14,12 @@ Você pode consultar informações adicionais sobre quadrados mágicos [aqui](ht
 Este problema foi inspirado por um jogo, dentre vários outros, comercializados pela empresa
 [EnigMais](https://www.enigmais.com.br/).
 
+## Importante (possível erro)
+
+Conforme https://mathworld.wolfram.com/MagicSquare.html o quadrado mágico 4x4 possui 880 soluções, enquanto
+o que segue abaixo é um número menor e, portanto, indica que o _design_ e a implementação correspondente,
+conforme esta referência, estão errados. O que exige investigação posterior.
+
 ## Projeto (design)
 
 A proposta é resolver o desafio por meio do produto D44, uma página web que exibe todas as soluções possíveis. As soluções são calculadas toda vez que a página é carregada.
@@ -39,11 +45,15 @@ A solução é definida por meio de um algoritmo que identifica todas as matrize
 
 **Passo 1**. Gere todas as combinações possíveis de 4 números dos 16 números empregados, sem repetições. Por exemplo, (1, 2, 3, 4) e (4, 9, 14, 16) são duas destas combinações. O total de combinações possíveis, ignorando a ordem dos elementos, é 16!/[4! (16 - 4)!] = 1820. Observe que cada uma destas 1820 combinações podem ser dispostas em 24 sequências diferentes (4! = 4 x 3 x 2 x 1).
 
-**Passo 2**. Das combinações do passo 1 selecione apenas aquelas cujas somas resultam em 34. Por exemplo, a combinação (1, 2, 3, 4) não satisfaz o critério de seleção, pois a soma é 10. Ou seja, esta combinação não é válida para uma linha, nem coluna nem diagonal da matriz desejada e, portanto, não faz parte da solução. De forma análoga, a combinação (2, 9, 14, 16) também não satisfaz esta restrição, pois a soma é 41. Por outro lado, a combinação (1, 6, 11, 16) satisfaz esta restrição. Observe que não necessariamente, 1, 6, 11 e 16, nesta ordem, forma uma linha, ou coluna ou diagonal, qualquer que seja o sentido, de uma solução. De fato, qualquer permutação destes elementos desta combinação também resulta em 34. Seja S o conjunto de todas as combinações cujas somas são 34, ou seja, todas as tuplas de quatro números cuja soma é 34. Naturalmente, só elementos deste conjunto podem ser utilizados para montar uma linha, coluna ou diagonal das matrizes desejadas, independente da ordem destes elementos.
+**Passo 2**. Das combinações do passo 1 selecione apenas aquelas cujas somas resultam em 34. Por exemplo, a combinação (1, 2, 3, 4) não satisfaz o critério de seleção, pois a soma é 10. Ou seja, esta combinação não é válida para uma linha, nem coluna nem diagonal da matriz desejada e, portanto, não faz parte da solução. De forma análoga, a combinação (2, 9, 14, 16) também não satisfaz esta restrição, pois a soma é 41. Por outro lado, a combinação (1, 6, 11, 16) satisfaz esta restrição. Observe que não necessariamente, 1, 6, 11 e 16, nesta ordem, forma uma linha, ou coluna ou diagonal, qualquer que seja o sentido, de uma solução. De fato, qualquer permutação destes elementos desta combinação também resulta em 34. Neste passo é definido o conjunto S de todas as combinações cujas somas são 34, ou seja, todas as tuplas de quatro números cuja soma é 34. Naturalmente, só elementos deste conjunto podem ser utilizados para montar uma linha, coluna ou diagonal das soluções desejadas, independente da ordem destes elementos.
 
-**Passo 3**. Gerar todas as combinações de 4 elementos (tupla de quatro números) do conjunto S, desde que não exista número repetido dentre os 16 números de cada combinação. Observe que cada elemento de S é uma tupla de 4 números. Observe que as permutações dos números de cada tupla de S serão ignoradas neste passo. As combinações geradas neste passo resultam no conjunto C de matrizes candidatas. Observe que se temos 4 tuplas, cada uma delas de 4 números, então temos uma matriz 4x4, neste caso, considerando cada tupla uma linha, temos que todas as linhas perfazem 34 (não necessariamente esta matriz faz parte da solução, mas é um começo, apesar de não termos verificado as somas das colunas nem tampouco das diagonais).
+**Passo 3**. Gerar todas as combinações de 4 elementos do conjunto S. Observe que cada elemento de S é uma tupla de 4 números. O total destas combinações é 86!/[4! (86-4)!] = 2.123.555, que é um número considerável e, naturalmente, nem todas elas são válidas, pois números podem ser repetidos nestas combinações. Neste passo, apenas as combinações que fazem uso dos 16 números são consideradas, produzindo o conjunto C.
+Ou seja, cada elemento do conjunto C define uma matriz candidata. Uma matriz candidata é uma matriz cujas linhas somam 34, mas que ignoram as permutações delas. Ou seja, cada matriz candidata representa 24 matrizes, sendo que cada uma delas ignora as permutações dos números em cada linha.
 
-**Passo 4**. Para cada elemento de C, ou matriz candidata, gerar as matrizes derivadas de todas as permutações dos valores das linhas. Dado que o total de permutações de 4 elementos é 24, teremos 24 x 24 x 24 x 24 = 331776 matrizes derivadas para cada elemento de C. Sabemos que cada matriz derivada satisfaz o critério de soma 34 das linhas, contudo, tanto as colunas quanto as diagonais precisam ser verificadas. Ao percorrer todas as derivadas de cada uma das candidatas e verificar, para cada uma delas, aquelas cujas colunas e diagonais são satisfeitas, tem-se como resultado a resposta desejada.
+**Passo 4**. Para cada elemento de C, ou matriz candidata, gerar as matrizes derivadas, todas as permutações das linhas.
+
+**Passo 5**. Para cada matriz derivada, gerada no passo anterior, gerar todas as permutações dos valores de cada uma das linhas. Dado que o total de permutações de 4 elementos é 24, teremos 24 x 24 x 24 x 24 = 331776 matrizes a serem consideradas para cada matriz derivada. Sabemos que cada matriz derivada satisfaz o critério de soma 34 das linhas, em consequência, é preciso verificar para cada uma delas 
+as colunas e as diagonais. Aquelas que satisfazem a soma 34 para as colunas e diagonais é uma solução desejada.
 
 **Passo 5**. Identificar, dentre as soluções encontradas, aquelas que são idênticas. Se houver, então remover as repetições. Verificar que todas as soluções fornecidas são distintas entre si.
 
