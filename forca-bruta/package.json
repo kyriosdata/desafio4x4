@@ -1,0 +1,16 @@
+{
+  "name": "desafio4x4",
+  "version": "1.0.0",
+  "description": "Implementação de algoritmo que apresenta todas as soluções do quadrado mágico 4x4",
+  "main": "quadrado-magico.js",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kyriosdata/desafio4x4.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Fábio Nogueira de Lucena"
+}
