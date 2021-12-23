@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/desafio4x4/static/css/main.65db53c5.css",
-    "main.js": "/desafio4x4/static/js/main.fd1c1fa9.js",
+    "main.js": "/desafio4x4/static/js/main.24765649.js",
     "static/js/787.bf32509e.chunk.js": "/desafio4x4/static/js/787.bf32509e.chunk.js",
     "static/media/d44.png": "/desafio4x4/static/media/d44.8c434747a9e722fa0a0e.png",
     "index.html": "/desafio4x4/index.html",
     "main.65db53c5.css.map": "/desafio4x4/static/css/main.65db53c5.css.map",
-    "main.fd1c1fa9.js.map": "/desafio4x4/static/js/main.fd1c1fa9.js.map",
+    "main.24765649.js.map": "/desafio4x4/static/js/main.24765649.js.map",
     "787.bf32509e.chunk.js.map": "/desafio4x4/static/js/787.bf32509e.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.65db53c5.css",
-    "static/js/main.fd1c1fa9.js"
+    "static/js/main.24765649.js"
   ]
 }
