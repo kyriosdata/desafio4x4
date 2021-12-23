@@ -1,7 +1,7 @@
 import {useEffect, useState} from "react";
 import logo from "./d44.png";
 import "./App.css";
-import d44 from "./d44"
+import d44 from "desafio4x4";
 import Matriz from "./Matriz";
 
 function App() {
@@ -28,6 +28,7 @@ function App() {
     return (
         <div className="container">
             <img src={logo} className="App-logo" alt="logo"/>
+            <h1>Total de soluções: {solucoes.length}</h1>
             {exibe(solucoes)}
         </div>
     );
