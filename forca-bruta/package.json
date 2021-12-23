@@ -12,5 +12,8 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "Fábio Nogueira de Lucena"
+  "author": "Fábio Nogueira de Lucena",
+  "devDependencies": {
+    "jest": "^27.4.5"
+  }
 }
