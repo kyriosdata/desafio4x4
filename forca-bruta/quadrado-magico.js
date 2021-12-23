@@ -5,21 +5,15 @@
 function passo1() {
     const todas = [];
 
-    function todasAsCombinacoes(vetor, tamanho, inicio, resultado) {
-        if (tamanho === 0) {
-            todas.push(resultado.slice());
-            return;
-        }
-
-        for (let i = inicio; i <= vetor.length - tamanho; i++) {
-            resultado[resultado.length - tamanho] = vetor[i];
-            todasAsCombinacoes(vetor, tamanho - 1, i + 1, resultado);
+    for (let a = 1; a < 17; a++) {
+        for (let b = a + 1; b < 17; b++) {
+            for (let c = b + 1; c < 17; c++) {
+                for (let d = c + 1; d < 17; d++) {
+                    todas.push([a, b, c, d]);
+                }
+            }
         }
     }
-
-    const numeros = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16];
-    const resposta = [0, 0, 0, 0];
-    todasAsCombinacoes(numeros, 4, 0, resposta);
 
     return todas;
 }
@@ -28,8 +22,12 @@ function passo1() {
 // PASSO 2
 //
 
-function passo2(vetores) {
-    return vetores.filter((c) => c[0] + c[1] + c[2] + c[3] === 34)
+function linha34(linha) {
+    return linha[0] + linha[1] + linha[2] + linha[3] === 34;
+}
+
+function passo2(linhas) {
+    return linhas.filter(linha34);
 }
 
 //
@@ -100,61 +98,8 @@ function passo3(somas34) {
 // PASSO 4
 //
 
-function colunas34(l1, l2, l3, l4) {
-    for (let c = 0; c < 4; c++) {
-        const soma = l1[c] + l2[c] + l3[c] + l4[c];
-        if (soma !== 34) {
-            return false;
-        }
-    }
-
-    return true;
-}
-
-function diagonais34(l1, l2, l3, l4) {
-    const d1 = l1[0] + l2[1] + l3[2] + l4[3];
-    if (d1 !== 34) {
-        return false;
-    }
-
-    const d2 = l1[3] + l2[2] + l3[1] + l4[0];
-    return d2 === 34;
-}
-
-/**
- * Troca as posições de dois elementos do vetor cujos índices são fornecidos.
- *
- * @param vetor O vetor cujos elementos serão trocados.
- * @param a O índice de um elemento que receberá o outro elemento.
- * @param b O índice do outro elemento.
- */
-function swap(vetor, a, b) {
-    const tmp = vetor[a];
-    vetor[a] = vetor[b];
-    vetor[b] = tmp;
-}
-
-function geraPermutacoes(elementos) {
-    const permutacoes = [];
-    permutacoes.push(elementos);
-    const indexes = [0, 0, 0, 0];
-    const n = 4;
-    let i = 0;
-    while (i < n) {
-        if (indexes[i] < i) {
-            swap(elementos, i % 2 === 0 ? 0 : indexes[i], i);
-            permutacoes.push(elementos.slice());
-            indexes[i]++;
-            i = 0;
-        } else {
-            indexes[i] = 0;
-            i++;
-        }
-    }
-
-    return permutacoes;
-}
-
+// Código obtido do portal StackOverflow
+// https://stackoverflow.com/questions/9960908/permutations-in-javascript
 const permutator = (inputArr) => {
     let result = [];
 
@@ -187,14 +132,38 @@ function passo4(candidatas) {
     return derivadas;
 }
 
+//
+// PASSO 5
+//
+
+function colunas34(l1, l2, l3, l4) {
+    for (let c = 0; c < 4; c++) {
+        const soma = l1[c] + l2[c] + l3[c] + l4[c];
+        if (soma !== 34) {
+            return false;
+        }
+    }
+
+    return true;
+}
+
+function diagonais34(l1, l2, l3, l4) {
+    const d1 = l1[0] + l2[1] + l3[2] + l4[3];
+    if (d1 !== 34) {
+        return false;
+    }
+
+    const d2 = l1[3] + l2[2] + l3[1] + l4[0];
+    return d2 === 34;
+}
+
 function passo5(matrizes) {
-    console.log("consideradas", matrizes.length);
     const solucoes = [];
     for (const matriz of matrizes) {
-        const linhas1 = geraPermutacoes(matriz[0]);
-        const linhas2 = geraPermutacoes(matriz[1]);
-        const linhas3 = geraPermutacoes(matriz[2]);
-        const linhas4 = geraPermutacoes(matriz[3]);
+        const linhas1 = permutator(matriz[0]);
+        const linhas2 = permutator(matriz[1]);
+        const linhas3 = permutator(matriz[2]);
+        const linhas4 = permutator(matriz[3]);
 
         for (const l1 of linhas1) {
             for (const l2 of linhas2) {
@@ -209,7 +178,6 @@ function passo5(matrizes) {
         }
     }
 
-    console.log("solucoes", solucoes.length);
     return solucoes;
 }
 
@@ -217,55 +185,20 @@ function passo5(matrizes) {
 // PASSO 6
 //
 
-function localizaMatrizesIdenticas(matrizes) {
-    const identicas = [];
-    const totalDeSolucoes = matrizes.length;
-    for (let s = 0; s < totalDeSolucoes; s++) {
-        for (let c = s + 1; c < totalDeSolucoes; c++) {
-            if (matrizesIguais(matrizes[s], matrizes[c])) {
-                identicas.push(c);
-            }
+function passo6(matrizes) {
+    let acumuladorDePropriedades = {};
+
+    function ignoraExistente(elemento) {
+        let propriedade = JSON.stringify(elemento);
+        if (acumuladorDePropriedades.hasOwnProperty(propriedade)) {
+            return false;
         }
+
+        acumuladorDePropriedades[propriedade] = true;
+        return true;
     }
 
-    const indicesNaoDuplicados = new Set(identicas);
-    return Array.from(indicesNaoDuplicados);
-}
-
-function matrizesIguais(m1, m2) {
-    for (let i = 0; i < 4; i++) {
-        for (let j = 0; j < 4; j++) {
-            if (m1[i][j] !== m2[i][j]) {
-                return false;
-            }
-        }
-    }
-
-    return true;
-}
-
-function removeEntradasDuplicadas(duplicidades, matrizes) {
-    const naoDuplicadas = [];
-
-    for (let i = 0; i < matrizes.length; i++) {
-        if (!duplicidades.includes(i)) {
-            naoDuplicadas.push(matrizes[i]);
-        }
-    }
-
-    return naoDuplicadas;
-}
-
-function passo6(respostasParciais) {
-    const iguais = localizaMatrizesIdenticas(respostasParciais);
-    const solucoes = removeEntradasDuplicadas(iguais, respostasParciais);
-
-    const verificacao = localizaMatrizesIdenticas(solucoes);
-    if (verificacao.length > 0) {
-        throw new Error("ainda iguais???");
-    }
-
-    return solucoes;
+    return matrizes.filter(ignoraExistente);
 }
 
 /**
@@ -277,11 +210,22 @@ function d44() {
     const inicio = new Date();
 
     const combinacoes = passo1();
+    console.log("combinacoes", combinacoes.length);
+
     const combinacoes34 = passo2(combinacoes);
+    console.log("combinacoes34", combinacoes34.length);
+
     const candidatas = passo3(combinacoes34);
+    console.log("candidatas", candidatas.length);
+
     const derivadas = passo4(candidatas);
-    const parcial = passo5(derivadas);
-    const solucoes = passo6(parcial);
+    console.log("derivadas", derivadas.length);
+
+    const parciais = passo5(derivadas);
+    console.log("derivadas", derivadas.length);
+
+    const solucoes = passo6(parciais);
+    console.log("solucoes", solucoes.length);
 
     const tempo = new Date() - inicio;
 
@@ -295,6 +239,41 @@ function main() {
     const resposta = d44();
     console.log("Tempo para execução (ms)", resposta.tempo);
     console.log("Total de soluções:", resposta.solucoes.length);
+}
+
+/**
+ * Seleciona, dentre as matrizes fornecidas, aquelas que satisfazem
+ * mascara. A máscara é uma matriz 4x4 contendo os valores de 0 a 16,
+ * inclusive. Quando uma célula da máscara é zero, então qualquer valor
+ * na matriz de interesse é considerado satisfeito, na mesma posição.
+ * Se o valor difere de zero, então a matriz de interesse deve
+ * possuir o mesmo valor na mesma posição.
+ * @param matrizes Matrizes das quais serão selecionadas aquelas de interesse.
+ * @param mascara A máscara a ser empregada na seleção.
+ */
+function filtro(matrizes, mascara) {
+    const filtradas = [];
+    for (let matriz of matrizes) {
+        if (satisfazMascara(matriz, mascara)) {
+            filtradas.push(matriz);
+        }
+    }
+
+    return filtradas;
+}
+
+function satisfazMascara(matriz, mascara) {
+    for (let i = 0; i < 4; i++) {
+        for (let j = 0; j < 4; j++) {
+            if (mascara[i][j] !== 0) {
+                if (mascara[i][j] !== matriz[i][j]) {
+                    return false;
+                }
+            }
+        }
+    }
+
+    return true;
 }
 
 main();
