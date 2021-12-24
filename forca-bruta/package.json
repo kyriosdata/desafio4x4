@@ -1,6 +1,6 @@
 {
   "name": "desafio4x4",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Implementação de algoritmo que apresenta todas as soluções do quadrado mágico 4x4",
   "main": "quadrado-magico.js",
   "license": "Apache-2.0",

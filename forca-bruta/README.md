@@ -29,4 +29,5 @@ dentre aquelas fornecida no vetor, que satisfazem tal máscara.
 
 ## Arquivo com soluções
 
-Por comodidade, as soluções também estão disponíveis
+Por comodidade, as soluções previamente computadas estão disponíveis no
+arquivo JSON denominado **solucoes.json**.
