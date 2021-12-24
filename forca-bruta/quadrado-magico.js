@@ -258,4 +258,4 @@ function satisfazMascara(matriz, mascara) {
   return true;
 }
 
-module.exports = d44;
+module.exports = { d44, filtro };

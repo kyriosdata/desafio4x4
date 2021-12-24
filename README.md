@@ -16,9 +16,8 @@ Este problema foi inspirado por um jogo, dentre vários outros, comercializados 
 
 ## Importante (possível erro)
 
-Conforme https://mathworld.wolfram.com/MagicSquare.html o quadrado mágico 4x4 possui 880 soluções, enquanto
-o que segue abaixo é um número menor e, portanto, indica que o _design_ e a implementação correspondente,
-conforme esta referência, estão errados. O que exige investigação posterior.
+Conforme https://mathworld.wolfram.com/MagicSquare.html o quadrado mágico 4x4 possui 880 soluções, enquanto o _design_ que segue e a implementação correspondente aponta um número bem maior, 7040
+soluções. Aqui, uma solução é diferente de outra se, ao olharmos para o "tabuleiro", pelo menos duas peças estão em posições diferentes.
 
 ## Projeto (design)
 
@@ -50,10 +49,9 @@ A solução é definida por meio de um algoritmo que identifica todas as matrize
 **Passo 3**. Gerar todas as combinações de 4 elementos do conjunto S. Observe que cada elemento de S é uma tupla de 4 números. O total destas combinações é 86!/[4! (86-4)!] = 2.123.555, que é um número considerável e, naturalmente, nem todas elas são válidas, pois números podem ser repetidos nestas combinações. Neste passo, apenas as combinações que fazem uso dos 16 números são consideradas, produzindo o conjunto C.
 Ou seja, cada elemento do conjunto C define uma matriz candidata. Uma matriz candidata é uma matriz cujas linhas somam 34, mas que ignoram as permutações delas. Ou seja, cada matriz candidata representa 24 matrizes, sendo que cada uma delas ignora as permutações dos números em cada linha.
 
-**Passo 4**. Para cada elemento de C, ou matriz candidata, gerar as matrizes derivadas, todas as permutações das linhas.
+**Passo 4**. Para cada elemento de C, ou matriz candidata, gerar as matrizes derivadas. Para cada matriz candidata, as permutações das linhas resultam em 24 matrizes derivadas.
 
-**Passo 5**. Para cada matriz derivada, gerada no passo anterior, gerar todas as permutações dos valores de cada uma das linhas. Dado que o total de permutações de 4 elementos é 24, teremos 24 x 24 x 24 x 24 = 331776 matrizes a serem consideradas para cada matriz derivada. Sabemos que cada matriz derivada satisfaz o critério de soma 34 das linhas, em consequência, é preciso verificar para cada uma delas 
-as colunas e as diagonais. Aquelas que satisfazem a soma 34 para as colunas e diagonais é uma solução desejada.
+**Passo 5**. Para cada matriz derivada, gerada no passo anterior, gerar todas as permutações dos valores de cada uma das linhas. Dado que o total de permutações de 4 elementos é 24, teremos 24 x 24 x 24 x 24 = 331776 matrizes a serem consideradas para cada matriz derivada. Sabemos que cada matriz derivada satisfaz o critério de soma 34 das linhas, em consequência, é preciso verificar para cada uma delas as colunas e as diagonais. Aquelas que satisfazem a soma 34 para as colunas e diagonais é uma solução desejada.
 
 **Passo 5**. Identificar, dentre as soluções encontradas, aquelas que são idênticas. Se houver, então remover as repetições. Verificar que todas as soluções fornecidas são distintas entre si.
 
@@ -68,10 +66,13 @@ esta matriz "filtro" é "zerada", naturalmente são exibidas todas as soluções
 
 ## Implementação
 
-Consulte o diretório [forca-bruta](forca-bruta). Observe que o arquivo
-[quadrado-magico.js](./forca-bruta/quadrado-magico.js) foi aquele
-utilizado nas experimentações. O cliente está no diretório
-[web](./forca-bruta/web).
+Consulte o diretório [forca-bruta](forca-bruta), que contém uma implementação
+do algoritmo definido acima. Esta implementação é usada para gerar as soluções
+que são simplesmente consultadas pela interface com o usuário.
+
+O cliente está disponível no diretório [web](./forca-bruta/web). Trata-se de uma
+aplicação em React que permite consultas (filtros) sobre as soluções definidas
+previamente e disponibilizadas por um arquivo a ser consultado em tempo de execução.
 
 ## Cliente (em produção)
 
