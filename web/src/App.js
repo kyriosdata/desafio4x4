@@ -17,13 +17,18 @@ function App() {
   const [loading, setLoading] = useState(true);
   const [solucoes, setSolucoes] = useState();
 
-  useEffect(async () => {
-    const recuperado = await axios(
+  useEffect(() => {
+    axios(
       "https://unpkg.com/desafio4x4@1.0.3/solucoes.json"
-    );
-
-    setSolucoes(recuperado.data);
-    setLoading(false);
+    ).then(({ data }) => {
+      if (data) {
+        setSolucoes(data);
+        setLoading(false);
+      } 
+    }).catch((error) => {
+      console.error(error);
+      return error;
+    })
   }, []);
 
   function exibe(matrizes) {
@@ -39,10 +44,12 @@ function App() {
   }
 
   return (
-    <div className="container">
+    <>
       <h1>Total de soluções: {solucoes.length}</h1>
-      {exibe(solucoes)}
-    </div>
+      <div className="container">
+        {exibe(solucoes)}
+      </div>
+    </>
   );
 }
 

@@ -12,7 +12,7 @@ function Matriz(props) {
         <div className="matriz">
             <table>
                 <tbody>
-                {props.valor.map(l => linha(l))}
+                    {props.valor.map(l => linha(l))}
                 </tbody>
             </table>
         </div>
