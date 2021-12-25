@@ -57,7 +57,7 @@ Ou seja, cada elemento do conjunto C define uma matriz candidata. Uma matriz can
 
 ### Interface com o usuário
 
-Dado que são quase 300 respostas, simplesmente listá-las é só uma simples proposta, na qual o usuário percorre cada uma delas, na ordem em que foram produzidas.
+Dado que são quase 7040 respostas, simplesmente listá-las é só uma simples proposta, na qual o usuário percorre cada uma delas, na ordem em que foram produzidas.
 
 Uma melhoria é empregar um filtro. O usuário tem a disposição uma matriz na
 qual estabelece um ou mais valores nas posições desejadas e, após cada mudança
