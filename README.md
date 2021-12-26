@@ -20,7 +20,7 @@ soluções. Aqui, uma solução é diferente de outra se, ao olharmos para o "ta
 ## Projeto (design)
 
 A proposta é resolver o desafio por meio do produto D44, uma página web que exibe todas as soluções possíveis. 
-Esta proposta inclui dois componentes que precisam ser projetados: (a) cálculo das soluções (algoritmo) e (b) exibição das soluções.
+Esta proposta inclui dois componentes que precisam ser projetados: (a) cálculo das soluções (algoritmo) e (b) interface com o usuário (exibição das soluções).
 
 ### Algoritmo
 
