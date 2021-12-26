@@ -6,7 +6,7 @@ Identificar todas as possíveis soluções do "quadrado mágico".
 > em uma matriz 4x4 de tal forma que as somas dos números em cada uma das linhas,
 > em cada uma das colunas e em cada uma das diagonais seja 34.
 
-Na ilustração abaixo o “quadrado”, “matriz” ou “tabuleiro” está parcialmente preenchido, restando o acréscimo dos números 2, 3, 4, 6, 10, 12 e 13. Observe que este preenchimento parcial não é parte de uma solução, pois a linha contendo 14 e 9, o que perfaz 23, precisa nas duas outras posições de números cuja soma deve perfazer 11, o que não é possível com os números ainda não empregados. A outra diagonal também não pode ser preenchida, pois para 34 falta 5, o que não é possível com os números disponíveis.
+Na ilustração abaixo o “quadrado”, “matriz” ou “tabuleiro” está parcialmente preenchido, restando o acréscimo dos números 2, 3, 4, 6, 10, 12 e 13. Observe que este preenchimento parcial não é parte de uma solução, pois a linha contendo 14 e 9, o que perfaz 23, precisa nas duas outras posições de números cuja soma deve perfazer 11, o que não é possível com os números ainda não empregados. Apesar deste preenchimento não ser parte de uma solução, observe que a outra diagonal pode ser preenchida com os valores 2 e 3, perfazendo 34.
 
 <img src="https://github.com/kyriosdata/desafio4x4/blob/main/imagens/4x4.png" width="300">
 
