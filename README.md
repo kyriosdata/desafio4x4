@@ -67,7 +67,7 @@ Consulte o diretório [forca-bruta](forca-bruta), que contém uma implementaçã
 do algoritmo definido acima. Esta implementação é usada para gerar as soluções
 que são simplesmente consultadas pela interface com o usuário.
 
-O cliente está disponível no diretório [web](./forca-bruta/web). Trata-se de uma
+O cliente está disponível no diretório [cliente](./cliente). Trata-se de uma
 aplicação em React que permite consultas (filtros) sobre as soluções definidas
 previamente e disponibilizadas por um arquivo a ser consultado em tempo de execução.
 
