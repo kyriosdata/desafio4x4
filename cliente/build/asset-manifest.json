@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "/desafio4x4/static/css/main.2cf70850.chunk.css",
+    "main.js": "/desafio4x4/static/js/main.34fd8069.chunk.js",
+    "main.js.map": "/desafio4x4/static/js/main.34fd8069.chunk.js.map",
+    "runtime-main.js": "/desafio4x4/static/js/runtime-main.fa184e38.js",
+    "runtime-main.js.map": "/desafio4x4/static/js/runtime-main.fa184e38.js.map",
+    "static/js/2.bb37bb43.chunk.js": "/desafio4x4/static/js/2.bb37bb43.chunk.js",
+    "static/js/2.bb37bb43.chunk.js.map": "/desafio4x4/static/js/2.bb37bb43.chunk.js.map",
+    "index.html": "/desafio4x4/index.html",
+    "static/css/main.2cf70850.chunk.css.map": "/desafio4x4/static/css/main.2cf70850.chunk.css.map",
+    "static/js/2.bb37bb43.chunk.js.LICENSE.txt": "/desafio4x4/static/js/2.bb37bb43.chunk.js.LICENSE.txt",
+    "static/media/d44.8c434747.png": "/desafio4x4/static/media/d44.8c434747.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.fa184e38.js",
+    "static/js/2.bb37bb43.chunk.js",
+    "static/css/main.2cf70850.chunk.css",
+    "static/js/main.34fd8069.chunk.js"
+  ]
+}
