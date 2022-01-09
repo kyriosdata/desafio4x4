@@ -12,10 +12,9 @@ Na ilustração abaixo o “quadrado”, “matriz” ou “tabuleiro” está p
 
 Este problema foi inspirado por um jogo comercializado pela empresa [EnigMais](https://www.enigmais.com.br/).
 
-## Importante (possível erro!?)
+## Curiosidade
 
-Conforme https://mathworld.wolfram.com/MagicSquare.html o quadrado mágico 4x4 possui 880 soluções, enquanto o _design_ que segue e a implementação correspondente resultam em um número bem maior, 7040
-soluções. Aqui, uma solução é diferente de outra se, ao olharmos para o "tabuleiro", pelo menos duas peças estão em posições diferentes.
+Conforme https://mathworld.wolfram.com/MagicSquare.html o quadrado mágico 4x4 possui 880 soluções, enquanto o _design_ que segue e a implementação correspondente resultam em um número bem maior, 7040 soluções. Nesta referência é afirmado que são excluídas as soluções que podem ser obtidas por rotação e reflexão. E que os as 880 soluções foram enumeradas em 1693. Adicionalmente, o quadrado 6x6 ainda não teve as soluções enumeradas, mas acredita-se que o número de soluções seja "enorme", conforme esta referência. Aqui, uma solução é diferente de outra se, ao olharmos para o "tabuleiro", pelo menos duas peças estão em posições diferentes.
 
 ## Projeto (design)
 
